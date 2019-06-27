@@ -1,6 +1,6 @@
 from fastai.callbacks import *
 
-from RetinaNet.object_detection_helper import *
+from .object_detection_helper import *
 
 from .BoundingBox import BoundingBox
 from .BoundingBoxes import BoundingBoxes
