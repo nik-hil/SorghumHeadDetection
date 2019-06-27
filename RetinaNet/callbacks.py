@@ -2,9 +2,9 @@ from fastai.callbacks import *
 
 from RetinaNet.object_detection_helper import *
 
-from RetinaNet.BoundingBox import BoundingBox
-from RetinaNet.BoundingBoxes import BoundingBoxes
-from RetinaNet.Evaluator import *
+from .BoundingBox import BoundingBox
+from .BoundingBoxes import BoundingBoxes
+from .Evaluator import *
 
 
 class BBLossMetrics(LearnerCallback):
