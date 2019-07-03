@@ -17,11 +17,11 @@ from fastai.vision import Learner, create_body, models, conv2d, ifnone, DatasetT
 from fastai.torch_core import to_np
 from fastai.vision.data import pil2tensor
 
-from RetinaNet.object_detection_helper import process_output, nms, rescale_boxes, GeneralEnsemble
-from RetinaNet.object_detection_helper import create_anchors, get_annotations_from_path
-from RetinaNet.RetinaNetFocalLoss import FocalLoss
-from RetinaNet.RetinaNet import RetinaNet
-from RetinaNet.callbacks import BBLossMetrics, BBMetrics, PascalVOCMetric
+from .object_detection_helper import process_output, nms, rescale_boxes, GeneralEnsemble
+from .object_detection_helper import create_anchors, get_annotations_from_path
+from .RetinaNetFocalLoss import FocalLoss
+from .RetinaNet import RetinaNet
+from .callbacks import BBLossMetrics, BBMetrics, PascalVOCMetric
 
 def tlbr2ltwhcs(boxes, scores):
     """
