@@ -1,10 +1,10 @@
 from fastai.callbacks import *
 
-from .object_detection_helper import *
+from RetinaNet.object_detection_helper import *
 
-from .BoundingBox import BoundingBox
-from .BoundingBoxes import BoundingBoxes
-from .Evaluator import *
+from RetinaNet.BoundingBox import BoundingBox
+from RetinaNet.BoundingBoxes import BoundingBoxes
+from RetinaNet.Evaluator import *
 
 
 class BBLossMetrics(LearnerCallback):
@@ -108,16 +108,15 @@ class PascalVOCMetric(Callback):
         class_pred_batch, bbox_pred_batch = last_output[:2]
 
         self.images_per_batch = self.images_per_batch if self.images_per_batch > 0 else class_pred_batch.shape[0]
+
         for bbox_gt, class_gt, clas_pred, bbox_pred in \
                 list(zip(bbox_gt_batch, class_gt_batch, class_pred_batch, bbox_pred_batch))[: self.images_per_batch]:
 
             bbox_pred, scores, preds = process_output(clas_pred, bbox_pred, self.anchors, self.detect_thresh)
-            if bbox_pred is None:# or len(preds) > 3 * len(bbox_gt):
+            if len(bbox_pred) <= 0: # or len(preds) > 3 * len(bbox_gt):
                 continue
 
-            #image = np.zeros((512, 512, 3), np.uint8)
-
-            # if the number is to hight evaluation is very slow
+            # if the number is too high evaluation is very slow
             total_nms_examples = len(class_gt) * 3
             bbox_pred = bbox_pred[:total_nms_examples]
             scores = scores[:total_nms_examples]
