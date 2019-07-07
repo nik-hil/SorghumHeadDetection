@@ -104,7 +104,7 @@ def get_bounding_box_predictions(learn, dataloader, anchors, original_images, ve
 
     
     for img_batch, target_batch in dataloader:
-    
+        print("\rProcessing batch {}".format(batch_index), end=" ")
         with torch.no_grad():
             prediction_batch = learn.model(img_batch)
             class_pred_batch, bbox_pred_batch = prediction_batch[:2]

@@ -9,8 +9,10 @@ def get_annotations_from_path(annotationsPath, prefix):
     classes = {}
     
     sorghumHeadCategory = 0
-    
+    idx = 1
+    total = len(filePaths)
     for path in filePaths:
+        print("\rProcessing {0}/{1} {2}".format(idx, total, path), end=" ")
         fullPath = annotationsPath/path
         id = path.replace('.txt', '.jpeg')
         
@@ -29,7 +31,7 @@ def get_annotations_from_path(annotationsPath, prefix):
                
 
             id2images[id] = prefix/id
-
+        idx += 1
     #Set up classes mapping from id to classname
     classes[sorghumHeadCategory] = 'sorghumHead'
                    

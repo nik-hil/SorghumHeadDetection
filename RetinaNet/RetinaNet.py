@@ -22,8 +22,8 @@ class RetinaNet(nn.Module):
                  chs=256, n_anchors=9, flatten=True, sizes=None):
         super().__init__()
         self.n_classes, self.flatten = n_classes, flatten
-        #imsize = (256, 256)
-        imsize = (1103, 287)
+        imsize = (256, 256)
+        # imsize = (1103, 287)
         self.sizes = sizes
         sfs_szs, _, hooks = self._model_sizes(encoder, size=imsize)
         self.encoder = encoder
